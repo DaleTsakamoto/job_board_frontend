@@ -6,16 +6,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import configureStore from './store'
 
+const store = configureStore()
 
 
 function Root() {
   return (
-    // <Provider>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    // </Provider>
+    </Provider>
   )
 }
 

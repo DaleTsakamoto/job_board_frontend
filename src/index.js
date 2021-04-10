@@ -11,11 +11,11 @@ import reportWebVitals from './reportWebVitals';
 
 function Root() {
   return (
-    <Provider>
+    // <Provider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
+    // </Provider>
   )
 }
 

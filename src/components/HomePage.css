@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Wickedqueen";
+  src: local("Wickedqueen"),
+    url("../fonts/Wickedqueen-Wyz34.ttf") format("truetype");
+  font-weight: normal;
+}
+
+.Homepage-header{
+  font-family: 'Wickedqueen';
+  text-align: center;
+}
+
+.Homepage-container{
+  margin: 0 5rem;
+}

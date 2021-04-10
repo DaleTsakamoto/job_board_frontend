@@ -34,6 +34,8 @@ function HomePage() {
             <Toast.Body>Need two, young whipersnappers to kidnap around 100 dogs</Toast.Body>
           </Toast>
         </Col>
+        </Row>
+        <Row>
         <Col xs={6}>
           <Toast show={showJob2} onClose={() => setShowJob2(false)}>
             <Toast.Header>
@@ -66,6 +68,8 @@ function HomePage() {
             <Toast.Body>Looking for a pale, noseless individual to burn a lightning-shaped tatoo in a young boys head</Toast.Body>
           </Toast>
         </Col>
+        </Row>
+        <Row>
         <Col xs={6}>
           <Toast show={showJob4} onClose={() => setShowJob4(false)}>
             <Toast.Header>

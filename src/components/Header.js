@@ -4,8 +4,13 @@ import {
   NavDropdown,
   Form,
   FormControl,
-  Button
+  Button,
+  InputGroup,
+
 } from 'react-bootstrap'
+
+import {IoMdSearch} from 'react-icons/io'
+import {ImLocation} from 'react-icons/im'
 
 function Header() {
   return (
@@ -19,10 +24,28 @@ function Header() {
         className="d-inline-block align-top"
         alt="Black hat logo"
       />
-      </Navbar.Brand>
-      <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <FormControl type="text" placeholder="Location" className="mr-sm-2" />
+        </Navbar.Brand>
+        {/* <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">
+      <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/GG-2.png" class="img-responsive" alt="Responsive image" width="30" height="24" />
+    </span>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+</div> */}
+        <Form inline>
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1"><IoMdSearch /></InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          </InputGroup>
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1"><ImLocation /></InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl type="text" placeholder="Location" className="mr-sm-2" />
+          </InputGroup>
         <Button variant="outline-success">Search</Button>
       </Form>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

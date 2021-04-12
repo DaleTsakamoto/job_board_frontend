@@ -10,7 +10,11 @@ import {
 } from 'react-bootstrap'
 
 import {IoMdSearch} from 'react-icons/io'
-import {ImLocation} from 'react-icons/im'
+import { ImLocation } from 'react-icons/im'
+import { FaHome } from 'react-icons/fa'
+import { RiDatabaseLine } from 'react-icons/ri'
+
+import './Header.css'
 
 function Header() {
   return (
@@ -25,14 +29,6 @@ function Header() {
         alt="Black hat logo"
       />
         </Navbar.Brand>
-        {/* <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">
-      <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/GG-2.png" class="img-responsive" alt="Responsive image" width="30" height="24" />
-    </span>
-  </div>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-</div> */}
         <Form inline>
           <InputGroup>
             <InputGroup.Prepend>
@@ -46,13 +42,13 @@ function Header() {
             </InputGroup.Prepend>
             <FormControl type="text" placeholder="Location" className="mr-sm-2" />
           </InputGroup>
-        <Button variant="outline-success">Search</Button>
+        <Button className='Navbar-Search-Button' variant="outline-success">Search</Button>
       </Form>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+          <Nav.Link href="/"><FaHome className="Header-Icons"/></Nav.Link>
+          <Nav.Link href="/jobboard"><RiDatabaseLine className="Header-Icons"/></Nav.Link>
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -63,7 +59,7 @@ function Header() {
         </Nav>
       </Navbar.Collapse>
       </Navbar>
-      </>
+    </>
   )
 }
 

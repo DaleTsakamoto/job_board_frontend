@@ -9,7 +9,8 @@ import {
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import QuestionsCarousel from '../QuestionsCarousel'
+import QuestionsCarouselEmployee from '../QuestionsCarouselEmployee'
+import QuestionsCarouselEmployer from '../QuestionsCarouselEmployer'
 import JobPanels from '../JobPanels'
 
 // import '../fonts/Wickedqueen-Wyz34.ttf'
@@ -17,6 +18,7 @@ import './HomePage.css'
 
 function HomePage() {
   const [rating, setRating] = useState(50)
+  const [user, setUser] = useState('Employer')
   const [sendYesButton, setSendYesButton] = useState("false");
 
   return (
@@ -40,7 +42,11 @@ function HomePage() {
                 </Card.Text>
               </Card.Body>
               <Card.Body >
-                <QuestionsCarousel sendYesButton={sendYesButton} setSendYesButton={setSendYesButton}/>
+                {user === "Employer" ? 
+                  <QuestionsCarouselEmployer sendYesButton={sendYesButton} setSendYesButton={setSendYesButton} />
+                  :
+                  <QuestionsCarouselEmployee sendYesButton={sendYesButton} setSendYesButton={setSendYesButton}/>
+                }
               </Card.Body>
             </Card>
             {/* <Slider min={0} max={100} onChange={(e) => setRating(e)} value={rating} /> */}

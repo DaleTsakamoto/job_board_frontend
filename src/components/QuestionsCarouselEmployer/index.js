@@ -6,14 +6,15 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import {
   ButtonGroup,
   ToggleButton,
-  Button
+  Button,
+  Form
 } from 'react-bootstrap'
 
-import './QuestionsCarousel.css'
+import './QuestionsCarouselEmployer.css'
 
 import AutofillBox from '../AutofillBox'
 
-function QuestionsCarousel({sendYesButton, setSendYesButton}) {
+function QuestionsCarouselEmployer({sendYesButton, setSendYesButton}) {
   const Range = createSliderWithTooltip(Slider.Range);
   const [range, setRange] = useState([0, 0])
 
@@ -37,13 +38,32 @@ function QuestionsCarousel({sendYesButton, setSendYesButton}) {
   return (
     <Carousel showIndicators={false} showThumbs={false} showArrows={true} >
       <div className='Questions-Carousel-Slides'>
-        <label>Location: </label>
+        <Form.Label>
+          Where are you Located?
+        </Form.Label>
       </div>
       <div className='Questions-Carousel-Slides'>
-        <AutofillBox />
+        <Form.Group
+          controlId='AboutUs'
+        >
+          <Form.Label>
+            What do you love about your company?
+          </Form.Label>
+          <Form.Control as='textarea' rows={3} />
+        </Form.Group>
       </div>
       <div className='Questions-Carousel-Slides'>
-        <label>Enter your Level: </label>
+        <Form.Group
+          controlId='AboutUs'
+        >
+          <Form.Label>
+            What do look for in an employee?
+          </Form.Label>
+          <Form.Control as='textarea' rows={3} />
+        </Form.Group>
+      </div>
+      <div className='Questions-Carousel-Slides'>
+        <Form.Label> What level are you looking for? </Form.Label>
         <ButtonGroup toggle>
         {radios.map((radio, idx) => (
           <ToggleButton
@@ -60,7 +80,8 @@ function QuestionsCarousel({sendYesButton, setSendYesButton}) {
         ))}
       </ButtonGroup>
       </div>
-        <div className='Questions-Carousel-Slides'>
+      <div className='Questions-Carousel-Slides'>
+      <Form.Label> What is your salary range? </Form.Label>
         <Range
           dotStyle={{ display: 'none' }}
           step={null}
@@ -78,7 +99,7 @@ function QuestionsCarousel({sendYesButton, setSendYesButton}) {
           onChange={(val) => calcSalary(val)} />
       </div>
       <div className='Questions-Carousel-Slides'>
-        <p>Are you ready to be matched with you perfect company?</p>
+        <p>Are you ready to be matched with your perfect candidate?</p>
         <Button onClick={sendInfo} variant="primary" size="lg" active>
           Yes!
         </Button>
@@ -87,4 +108,4 @@ function QuestionsCarousel({sendYesButton, setSendYesButton}) {
   );  
 }
 
-export default QuestionsCarousel;
+export default QuestionsCarouselEmployer;

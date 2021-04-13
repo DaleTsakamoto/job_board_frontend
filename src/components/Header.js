@@ -19,11 +19,11 @@ import './Header.css'
 function Header() {
   return (
     <>
-      <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar bg="transparent" expand="lg">
+      <Navbar.Brand href="/">
       <img
-        src="/Black_hat_logo.png"
-        width="25"
+        src="/tech_logo.png"
+        width="30"
         height="30"
         className="d-inline-block align-top"
         alt="Black hat logo"

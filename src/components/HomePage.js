@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import logo from '../logo.svg';
 import {
   Toast
 } from 'react-bootstrap'
+
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 import '../fonts/Wickedqueen-Wyz34.ttf'
 import './HomePage.css'
@@ -12,10 +15,16 @@ function HomePage() {
   const [showJob2, setShowJob2] = useState(true);
   const [showJob3, setShowJob3] = useState(true);
   const [showJob4, setShowJob4] = useState(true);
+  const [rating, setRating] = useState(50)
+  // const inputEl = useRef(null);
+  // const onButtonClick = () => {
+  //   // `current` points to the mounted text input element
+  //   console.log(inputEl.current.state.value);
+  // };
 
   return (
     <div className='Homepage-container'>
-      <h1 className='Homepage-header'> Villainous Jobs </h1>
+      <Slider min={0} max={100} onChange={(e) => setRating(e)} value={rating} />
           <Toast show={showJob1} onClose={() => setShowJob1(false)}>
             <Toast.Header>
               <img

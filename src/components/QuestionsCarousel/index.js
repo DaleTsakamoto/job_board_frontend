@@ -1,63 +1,56 @@
-import React, { Component, useState } from "react";
-import Slider from "react-slick";
+import React, { useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import Slider, { Range } from 'rc-slider';
 
-import {Button} from 'react-bootstrap'
+import {
+  ButtonGroup,
+  ToggleButton
+} from 'react-bootstrap'
 
 import './QuestionsCarousel.css'
 
-// function Questions() {
-//   const [next, setNext] = useState(false)
-// }
+import AutofillBox from '../AutofillBox'
 
-class QuestionsCarousel extends Component {
-  constructor(props) {
-    super(props);
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-  }
-  next() {
-    this.slider.slickNext();
-  }
-  previous() {
-    this.slider.slickPrev();
-  }
-  render() {
-    const settings = {
-      arrows: false,
-      dots: false,
-      fade: true,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
-    return (
-      <div>
-        <Slider ref={c => (this.slider = c)} {...settings}>
-          <div key={1}>
-            <h3>1</h3>
-          </div>
-          <div key={2}>
-            <h3>2</h3>
-          </div>
-          <div key={3}>
-            <h3>3</h3>
-          </div>
-          <div key={4}>
-            <h3>4</h3>
-          </div>
-        </Slider>
-        <div style={{ textAlign: "center" }}>
-          <Button variant="primary" size="sm" onClick={this.previous}>
-            Previous
-          </Button>{' '}
-          <Button variant="primary" size="sm" onClick={this.next}>
-            Next
-          </Button>
-        </div>
+function QuestionsCarousel() {
+  const [salary, setSalary] = useState(0)
+  const [radioValue, setRadioValue] = useState('1');
+
+  const radios = [
+    { name: 'Jr (0-3 yrs)', value: '1' },
+    { name: 'Mid (3-5 yrs)', value: '2' },
+    { name: 'Sr (5+ yrs)', value: '3' },
+  ];
+
+
+  return (
+    <Carousel showIndicators={ false} showThumbs={ false} showArrows={true} >
+      <div className='Questions-Carousel-Slides'>
+        <AutofillBox />
       </div>
-    );
-  }
+      <div className='Questions-Carousel-Slides'>
+        <label>Enter your Level: </label>
+        <ButtonGroup toggle>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            key={idx}
+            type="radio"
+            variant="secondary"
+            name="radio"
+            value={radio.value}
+            checked={radioValue === radio.value}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
+      </div>
+        <div className='Questions-Carousel-Slides'>
+          <Range min={0} max={200000} />
+        </div>
+    </Carousel>
+  );  
 }
 
 export default QuestionsCarousel

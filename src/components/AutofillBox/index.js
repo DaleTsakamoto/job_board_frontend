@@ -14,7 +14,8 @@ const menuMultipleStyles = {
   zIndex: 1000,
   listStyle: 'none',
   padding: 0,
-  left: '340px',
+  left: '5px',
+  textAlign: 'left'
 }
 
 const comboboxStyles = { display: 'inline-block', marginLeft: '5px' }
@@ -95,7 +96,7 @@ function AutofillBox () {
   })
   return (
     <div>
-      <label {...getLabelProps()}>Choose some elements:</label>
+      <label {...getLabelProps()}>Enter your Skills:</label>
       <div style={comboboxWrapperStyles}>
         {selectedItems.map((selectedItem, index) => (
           <span

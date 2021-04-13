@@ -35,7 +35,10 @@ function QuestionsCarousel({sendYesButton, setSendYesButton}) {
 
 
   return (
-    <Carousel showIndicators={ false} showThumbs={ false} showArrows={true} >
+    <Carousel showIndicators={false} showThumbs={false} showArrows={true} >
+      <div className='Questions-Carousel-Slides'>
+        <label>Location: </label>
+      </div>
       <div className='Questions-Carousel-Slides'>
         <AutofillBox />
       </div>

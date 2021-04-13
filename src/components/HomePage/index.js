@@ -3,16 +3,14 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  ListGroup,
-  ListGroupItem
+  Card
 } from 'react-bootstrap'
 
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import QuestionsCarousel from '../QuestionsCarousel'
-import AutofillBox from '../AutofillBox'
+import JobPanels from '../JobPanels'
 
 // import '../fonts/Wickedqueen-Wyz34.ttf'
 import './HomePage.css'
@@ -20,17 +18,13 @@ import './HomePage.css'
 function HomePage() {
   const [rating, setRating] = useState(50)
   const [sendYesButton, setSendYesButton] = useState("false");
-  // const inputEl = useRef(null);
-  // const onButtonClick = () => {
-  //   // `current` points to the mounted text input element
-  //   console.log(inputEl.current.state.value);
-  // };
 
   return (
     <div className='Homepage-container'>
       <Container className={sendYesButton ? null : "slit-out-vertical"} >
         <Row>
           <Col xs={6} md={4}>
+            <JobPanels />
           </Col>
           <Col xs={12} md={8}>
             <Card style={{ width: '20rem' }}>

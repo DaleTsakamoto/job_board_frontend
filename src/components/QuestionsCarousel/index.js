@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import Slider, { Range } from 'rc-slider';
+import Slider, { createSliderWithTooltip } from 'rc-slider';
 
 import {
   ButtonGroup,
@@ -13,6 +13,7 @@ import './QuestionsCarousel.css'
 import AutofillBox from '../AutofillBox'
 
 function QuestionsCarousel() {
+  const Range = createSliderWithTooltip(Slider.Range);
   const [salary, setSalary] = useState(0)
   const [radioValue, setRadioValue] = useState('1');
 

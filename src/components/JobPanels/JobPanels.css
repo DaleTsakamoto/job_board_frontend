@@ -1,3 +1,8 @@
 .add-cursor{
   cursor: pointer;
 }
+
+.Job-Matches-Header{
+  background-color: rgb(218, 156, 156);
+  width: 100%;
+}

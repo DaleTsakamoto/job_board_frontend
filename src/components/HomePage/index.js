@@ -20,14 +20,18 @@ function HomePage() {
   const [sendYesButton, setSendYesButton] = useState("false");
 
   return (
-    <div className='Homepage-container'>
-      <Container className={sendYesButton ? null : "slit-out-vertical"} >
-        <Row>
-          <Col xs={6} md={4}>
+      <div > 
+        <Row noGutters={true}>
+        <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
+          <Card>
+            <Card.Header style={{ backgroundColor: 'rgb(218, 156, 156)', width: '100%' }}>My Job Matches</Card.Header>
+            <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>Discover New Matches</Card.Header>
             <JobPanels />
+          </Card>
           </Col>
-          <Col xs={12} md={8}>
-            <Card style={{ width: '20rem' }}>
+        <Col xs={12} md={7}>
+          <div className="Homepage-Request-Container">
+            <Card style={{ width: '20rem' }} className={sendYesButton ? null : "slit-out-vertical"} >
               <Card.Img variant="top" src="./background_1.jpeg" />
               <Card.Body>
                 <Card.Title>Make a Match</Card.Title>
@@ -40,10 +44,10 @@ function HomePage() {
               </Card.Body>
             </Card>
             {/* <Slider min={0} max={100} onChange={(e) => setRating(e)} value={rating} /> */}
+            </div>
           </Col>
         </Row>
-      </Container>
-    </div>
+      </div>
   );
 }
 

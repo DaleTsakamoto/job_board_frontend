@@ -1,0 +1,13 @@
+.MenuStyle{
+  max-height: '180px';
+  overflow-y: 'auto';
+  width: '135px';
+  margin: 0;
+  border-top: 0;
+  background: 'white';
+  position: 'absolute';
+  z-index: 1000;
+  list-style: 'none';
+  padding: 0;
+  left: '340px';
+}

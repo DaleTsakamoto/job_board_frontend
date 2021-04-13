@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import logo from '../logo.svg';
+import AutofillBox from '../AutofillBox'
 import {
   Toast
 } from 'react-bootstrap'
@@ -7,7 +7,7 @@ import {
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import '../fonts/Wickedqueen-Wyz34.ttf'
+// import '../fonts/Wickedqueen-Wyz34.ttf'
 import './HomePage.css'
 
 function HomePage() {
@@ -24,6 +24,7 @@ function HomePage() {
 
   return (
     <div className='Homepage-container'>
+      <AutofillBox />
       <Slider min={0} max={100} onChange={(e) => setRating(e)} value={rating} />
           <Toast show={showJob1} onClose={() => setShowJob1(false)}>
             <Toast.Header>

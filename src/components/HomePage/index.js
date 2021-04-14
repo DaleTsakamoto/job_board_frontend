@@ -19,7 +19,7 @@ import './HomePage.css'
 
 function HomePage() {
   const [rating, setRating] = useState(50)
-  const [user, setUser] = useState('Employer')
+  const [user, setUser] = useState('User')
   const [sendYesButton, setSendYesButton] = useState("false");
   const [open, setOpen] = useState(false);
 

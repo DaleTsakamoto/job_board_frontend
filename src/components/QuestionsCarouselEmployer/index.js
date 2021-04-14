@@ -67,9 +67,12 @@ function QuestionsCarouselEmployer({sendYesButton, setSendYesButton}) {
   return (
     <Carousel showIndicators={false} showThumbs={false} showArrows={true} >
       <div className='Questions-Carousel-Slides'>
+      <Form.Group controlId='location'>
         <Form.Label>
-          Where are you Located?
+            What is the closest large city to you?
         </Form.Label>
+        <Form.Control style={{fontSize: 12}} />
+      </Form.Group>
       </div>
       <div className='Questions-Carousel-Slides'>
         <Form.Group controlId='AboutUs'>
@@ -108,6 +111,9 @@ function QuestionsCarouselEmployer({sendYesButton, setSendYesButton}) {
             null
           }
         </Form.Group>
+      </div>
+      <div className='Questions-Carousel-Slides'>
+        <AutofillBox />
       </div>
       <div className='Questions-Carousel-Slides'>
         <Form.Label> What level are you looking for? </Form.Label>

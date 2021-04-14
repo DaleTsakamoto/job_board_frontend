@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useMultipleSelection, useCombobox } from 'downshift'
 
 import './AutofillBox.css'
@@ -46,7 +46,14 @@ function AutofillBox () {
     /* Libraries */
     'React',
     'Redux',
+
+    /* Databases */
+    'Postgres',
+    'MongoDB',
+    'NoSQL',
+
   ]
+
   const [inputValue, setInputValue] = useState('')
   const {
     getSelectedItemProps,
@@ -54,13 +61,18 @@ function AutofillBox () {
     addSelectedItem,
     removeSelectedItem,
     selectedItems,
-  } = useMultipleSelection({initialSelectedItems: [items[0], items[1]]})
+  } = useMultipleSelection({initialSelectedItems: [items[0]]})
   const getFilteredItems = (items) =>
     items.filter(
       (item) =>
         selectedItems.indexOf(item) < 0 &&
         item.toLowerCase().startsWith(inputValue.toLowerCase()),
     )
+  
+    useEffect(() => {
+      console.log(selectedItems)
+    })
+  
   const {
     isOpen,
     getToggleButtonProps,

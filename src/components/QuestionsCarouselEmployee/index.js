@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import {Form} from 'react-bootstrap'
 import { Carousel } from 'react-responsive-carousel';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 
@@ -37,7 +38,12 @@ function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
   return (
     <Carousel showIndicators={false} showThumbs={false} showArrows={true} >
       <div className='Questions-Carousel-Slides'>
-        <label>Location: </label>
+        <Form.Group controlId='location'>
+          <Form.Label>
+              What is the closest large city to you?
+          </Form.Label>
+          <Form.Control style={{fontSize: 12}} />
+        </Form.Group>
       </div>
       <div className='Questions-Carousel-Slides'>
         <AutofillBox />

@@ -127,7 +127,13 @@ function CreateAccountModal(props) {
             :
             null
           }
-        </Form.Group>
+          </Form.Group>
+          <div className="mb-3">
+            <Form.File id="formcheck-api-regular">
+              <Form.File.Label>Upload your resume</Form.File.Label>
+              <Form.File.Input />
+            </Form.File>
+          </div>
         <Button variant="primary" type="submit">
           Submit
         </Button>

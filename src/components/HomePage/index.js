@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Row,
   Col,
@@ -14,6 +14,7 @@ import QuestionsCarouselEmployee from '../QuestionsCarouselEmployee'
 import QuestionsCarouselEmployer from '../QuestionsCarouselEmployer'
 import JobPanels from '../JobPanels'
 import SidePanel from '../SidePanel'
+import CurrentJob from '../CurrentJob'
 
 // import '../fonts/Wickedqueen-Wyz34.ttf'
 import './HomePage.css'
@@ -21,26 +22,28 @@ import './HomePage.css'
 function HomePage() {
   const [rating, setRating] = useState(50)
   const [user, setUser] = useState('User')
-  const [sendYesButton, setSendYesButton] = useState("false");
+  const [sendYesButton, setSendYesButton] = useState(false);
   const [open, setOpen] = useState(false);
+  let mainCard = useRef(null)
+
+  useEffect(() => {
+    if (sendYesButton) {
+      let time = setTimeout(function () {
+        mainCard.current.classList.remove("slit-in-vertical")
+        mainCard.current.classList.add("d-none")
+        clearTimeout(time)
+       }, 1000);
+    }
+  }, [sendYesButton])
 
   return (
     <div >
-              <SidePanel />
+      <SidePanel />
       <Row noGutters={true}>
-        {/* <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
-          <Card>
-            <div className='Homepage-Job-Matches-Header'>
-              <FaConnectdevelop className='HomePage-Tech-Logo' />
-              <h1 className='HomePage-Logo-Title'>techSearch </h1>
-            </div>
-            <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>My Matches</Card.Header>
-            <JobPanels />         
-          </Card>
-        </Col> */}
         <Col xs={12} md={7}>
           <div className="Homepage-Request-Container">
-            <Card style={{ width: '22rem' }} className={sendYesButton ? null : "slit-out-vertical"} >
+            <CurrentJob sendYesButton={sendYesButton}/>
+            <Card ref={mainCard} style={{ width: '22rem' }} className={sendYesButton ? "slit-out-vertical" : null} >
               <Card.Img variant="top" src="./background_1.jpeg" />
               <Card.Body>
                 <Card.Title>Make a Match</Card.Title>

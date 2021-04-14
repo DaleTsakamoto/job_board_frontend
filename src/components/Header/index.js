@@ -1,3 +1,5 @@
+import {useState} from 'react'
+
 import {
   Navbar,
   Button,
@@ -7,7 +9,11 @@ import {FaConnectdevelop} from 'react-icons/fa'
 
 import './Header.css'
 
+import LoginModal from '../LogInModal'
+
 function Header() {
+  const [modalShow, setModalShow] = useState(false);
+
   return (
     <>
       <Navbar bg="transparent" expand="xs sm md lg">
@@ -19,8 +25,12 @@ function Header() {
         </Navbar.Brand>
         <h1 className='Navbar-Logo-Title'>techSearch </h1>
         </div>
-        <Button className="Navbar-Signin" size="md"> Log In </Button>
+        <Button className="Navbar-Signin" size="md" onClick={() => setModalShow(true)}> Log In </Button>
       </Navbar>
+      <LoginModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   )
 }

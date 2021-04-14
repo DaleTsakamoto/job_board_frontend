@@ -6,6 +6,7 @@ import {
 import CreateAccountModal from '../CreateAccountModal'
 import './SplashPage.css'
 
+
 function SplashPage() {
   const [modalShow, setModalShow] = useState(false);
 

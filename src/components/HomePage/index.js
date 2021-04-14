@@ -13,6 +13,7 @@ import 'rc-slider/assets/index.css';
 import QuestionsCarouselEmployee from '../QuestionsCarouselEmployee'
 import QuestionsCarouselEmployer from '../QuestionsCarouselEmployer'
 import JobPanels from '../JobPanels'
+import SidePanel from '../SidePanel'
 
 // import '../fonts/Wickedqueen-Wyz34.ttf'
 import './HomePage.css'
@@ -24,9 +25,10 @@ function HomePage() {
   const [open, setOpen] = useState(false);
 
   return (
-      <div > 
-        <Row noGutters={true}>
-        <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
+    <div >
+              <SidePanel />
+      <Row noGutters={true}>
+        {/* <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
           <Card>
             <div className='Homepage-Job-Matches-Header'>
               <FaConnectdevelop className='HomePage-Tech-Logo' />
@@ -35,10 +37,10 @@ function HomePage() {
             <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>My Matches</Card.Header>
             <JobPanels />         
           </Card>
-          </Col>
+        </Col> */}
         <Col xs={12} md={7}>
           <div className="Homepage-Request-Container">
-            <Card style={{ width: '20rem' }} className={sendYesButton ? null : "slit-out-vertical"} >
+            <Card style={{ width: '22rem' }} className={sendYesButton ? null : "slit-out-vertical"} >
               <Card.Img variant="top" src="./background_1.jpeg" />
               <Card.Body>
                 <Card.Title>Make a Match</Card.Title>

@@ -1,9 +1,35 @@
-.Header-Icons{
-  height: 1.5rem;
-  width: 1.5rem;
-  margin: 0 .5rem;
+@font-face {
+  font-family: "ProximaNova";
+  src: local("ProximaNova"),
+    url("../../fonts/ProximaNova-Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
+.Header-Tech-Logo{
+  height: 2.2rem;
+  width: 2.2rem;
+  color: white; 
+}
+
+.Header-Navbar-Container{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Header-Navbar-Symbol-Holder{
+  display: flex;
+  flex-direction: row;
 }
 
 .Navbar-Search-Button{
   margin-right: 1rem;
+}
+
+.Navbar-Logo-Title{
+  font-family: 'ProximaNova';
+  color: white;
+  letter-spacing: .1px;
+  font-weight: bold;
 }

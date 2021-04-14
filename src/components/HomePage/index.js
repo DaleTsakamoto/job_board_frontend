@@ -1,14 +1,13 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import {
-  Container,
   Row,
   Col,
   Card,
   Button,
-  Collapse
 } from 'react-bootstrap'
 
-import Slider, { Range } from 'rc-slider';
+import {FaConnectdevelop} from 'react-icons/fa'
+
 import 'rc-slider/assets/index.css';
 
 import QuestionsCarouselEmployee from '../QuestionsCarouselEmployee'
@@ -29,8 +28,11 @@ function HomePage() {
         <Row noGutters={true}>
         <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
           <Card>
-            <div className='Homepage-Job-Matches-Header'>My Matches</div>
-            <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>Discover New Matches</Card.Header>
+            <div className='Homepage-Job-Matches-Header'>
+              <FaConnectdevelop className='HomePage-Tech-Logo' />
+              <h1 className='HomePage-Logo-Title'>techSearch </h1>
+            </div>
+            <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>My Matches</Card.Header>
             <JobPanels />         
           </Card>
           </Col>

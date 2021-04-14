@@ -7,14 +7,14 @@ function JobPanels() {
   return (
     <>
       <Accordion>
-        <Card>
-            <Accordion.Toggle as={Card.Header} eventKey='0' className='add-cursor'>Job Title 1</Accordion.Toggle>
+        <Card style={{border: 'none'}}>
+          <Accordion.Toggle as={Card.Header} eventKey='0' className='add-cursor' style={{backgroundColor: 'white'}}>Job Title 1</Accordion.Toggle>
           <Accordion.Collapse eventKey='0'>
             <Card.Body > Panel content 1</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
-            <Accordion.Toggle as={Card.Header} eventKey='1' className='add-cursor'>Job Title 2</Accordion.Toggle>
+        <Card style={{border: 'none'}}>
+            <Accordion.Toggle as={Card.Header} eventKey='1' className='add-cursor' style={{backgroundColor: 'white'}}>Job Title 2</Accordion.Toggle>
           <Accordion.Collapse eventKey='1'>
             <Card.Body > Panel content 2</Card.Body>
           </Accordion.Collapse>

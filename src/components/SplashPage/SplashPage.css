@@ -1,3 +1,26 @@
+@font-face {
+  font-family: "ProximaNova";
+  src: local("ProximaNova"),
+    url("../../fonts/ProximaNova-Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
 body{
   background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('./background_2.jpeg');
+}
+
+.SplashPage-Container{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.SplashPage-Container > h1{
+  font-family: 'ProximaNova';
+  font-size: 8rem;
+  font-weight: bold;
 }

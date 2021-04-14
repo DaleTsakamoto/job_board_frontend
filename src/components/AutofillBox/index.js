@@ -70,7 +70,6 @@ function AutofillBox () {
     'NoSQL',
     'Redis',
     'AWS',
-
   ]
 
   const [inputValue, setInputValue] = useState('')

@@ -3,7 +3,9 @@ import {
   Container,
   Row,
   Col,
-  Card
+  Card,
+  Button,
+  Collapse
 } from 'react-bootstrap'
 
 import Slider, { Range } from 'rc-slider';
@@ -20,15 +22,16 @@ function HomePage() {
   const [rating, setRating] = useState(50)
   const [user, setUser] = useState('Employer')
   const [sendYesButton, setSendYesButton] = useState("false");
+  const [open, setOpen] = useState(false);
 
   return (
       <div > 
         <Row noGutters={true}>
         <Col xs={10} sm={9} md={7} lg={5} style={{height: '100vh', backgroundColor: 'white'}}>
           <Card>
-            <Card.Header style={{ backgroundColor: 'rgb(218, 156, 156)', width: '100%' }}>My Job Matches</Card.Header>
+            <div className='Homepage-Job-Matches-Header'>My Matches</div>
             <Card.Header style={{ backgroundColor: 'whitesmoke', width: '100%' }}>Discover New Matches</Card.Header>
-            <JobPanels />
+            <JobPanels />         
           </Card>
           </Col>
         <Col xs={12} md={7}>

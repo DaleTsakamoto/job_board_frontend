@@ -108,7 +108,7 @@ function AutofillBox () {
   })
   return (
     <div>
-      <label {...getLabelProps()}>Enter your Skills:</label>
+      <label {...getLabelProps()}>Skills:</label>
       <div style={comboboxWrapperStyles}>
         {selectedItems.map((selectedItem, index) => (
           <span

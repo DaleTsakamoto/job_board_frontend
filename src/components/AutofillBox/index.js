@@ -40,17 +40,36 @@ function AutofillBox () {
     'Python',
     'Java',
     'C++',
+    'C',
     'C#',
     'Ruby',
+    'PHP',
+    'Go',
+    'R',
+    'Swift',
 
-    /* Libraries */
+    /* Frameworks */
     'React',
+    'Angular',
+    'Vue',
+    'Ember',
     'Redux',
+    'Bootstrap',
+    'Jquery',
+    'Flask',
+
+    /* ORM */
+    'Sequelize',
+    'Django',
+    'Rubyonrails',
 
     /* Databases */
-    'Postgres',
+    'PostgreSQL',
+    'MySQL',
     'MongoDB',
     'NoSQL',
+    'Redis',
+    'AWS',
 
   ]
 

@@ -6,13 +6,10 @@ import {
   Button,
 } from 'react-bootstrap'
 
-import {FaConnectdevelop} from 'react-icons/fa'
-
 import 'rc-slider/assets/index.css';
 
 import QuestionsCarouselEmployee from '../QuestionsCarouselEmployee'
 import QuestionsCarouselEmployer from '../QuestionsCarouselEmployer'
-import JobPanels from '../JobPanels'
 import SidePanel from '../SidePanel'
 import CurrentJob from '../CurrentJob'
 
@@ -59,7 +56,6 @@ function HomePage() {
                 }
               </Card.Body>
             </Card>
-            {/* <Slider min={0} max={100} onChange={(e) => setRating(e)} value={rating} /> */}
             </div>
           </Col>
         </Row>

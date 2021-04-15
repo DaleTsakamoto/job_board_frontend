@@ -7,7 +7,7 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import {
   ButtonGroup,
   ToggleButton,
-  Button
+  Button,
 } from 'react-bootstrap'
 
 import './QuestionsCarouselEmployee.css'

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   Modal,
@@ -23,26 +23,19 @@ function CreateAccountModal(props) {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    console.log(password === confirmPassword)
     if (form.checkValidity() === false || password !== confirmPassword) {
       event.preventDefault();
       event.stopPropagation();
-    }
-    setValidated(true);
-  };
-
-  useEffect(() => {
-    if (validated) {
-      let userType;
-      userType = userType ? "employer" : "user";
+    } else {
       return (
-        dispatch(sessionActions.signup({ email, password, firstName, lastName, userType }))
+        dispatch(sessionActions.signup({ email, password, firstName, lastName, employer }))
       )
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
     }
-  },[validated])
+    setValidated(true);
+  };
 
   return (
     <Modal

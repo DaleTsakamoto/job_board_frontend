@@ -10,12 +10,13 @@ const setUser = (user) => {
 }
 
 export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
-  const res = await fetch('api/session', {
+  const { email, password, employer } = user;
+  const res = await fetch('api/session/login', {
     method: 'POST',
     body: JSON.stringify({
-      credential,
+      email,
       password,
+      employer,
     })
   })
   dispatch(setUser(res.formData.user))
@@ -24,16 +25,15 @@ export const login = (user) => async (dispatch) => {
 
 
 export const signup = (user) => async (dispatch) => {
-  const { email, username, password, firstName, lastName, userType } = user;
-  const res = await fetch('/api/users', {
+  const { email, password, firstName, lastName, employer } = user;
+  const res = await fetch('/api/session/signup', {
     method: 'POST',
     body: JSON.stringify({
       email,
-      username,
       password,
       firstName,
       lastName,
-      userType
+      employer
     }),
   })
   dispatch(setUser(res.data.user))

@@ -15,26 +15,22 @@ function LoginModal(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState([])
+  const [employer, setEmployer] = useState(false)
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      return dispatch(sessionActions.login({ email, password, employer })).catch(
+        (res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        }
+      );
     }
     setValidated(true);
   };
-
-  useEffect(() => {
-    if (validated) {
-        setErrors([]);
-        return dispatch(sessionActions.login({ email, password })).catch(
-          (res) => {
-            if (res.data && res.data.errors) setErrors(res.data.errors);
-          }
-        );
-      };
-  },[validated])
 
   return (
     <Modal
@@ -80,9 +76,9 @@ function LoginModal(props) {
                 Please provide a valid password.
               </Form.Control.Feedback>
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Text className="text-muted">
-              Your match is just around the corner.
-            </Form.Text>
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check value={employer} onChange={(e) => setEmployer(e.target.value)}type="checkbox" label="Employer" />
+            </Form.Group>
           </Form.Group>
         <Button variant="primary" type="submit">
           Submit

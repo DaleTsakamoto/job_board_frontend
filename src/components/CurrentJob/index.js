@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import Slider from 'rc-slider'
 
 import {
@@ -12,6 +13,8 @@ import {IoMdClose} from 'react-icons/io'
 import './CurrentJob.css'
 
 function CurrentJob({ sendYesButton }) {
+  const matches = useSelector(state => state.matches)
+  const [count, setCount] = useState(0)
   const [rating, setRating] = useState(0)
   const [like, setLike] = useState(false)
   let singleCard = useRef(null)
@@ -30,21 +33,26 @@ function CurrentJob({ sendYesButton }) {
     singleCard.current.classList.remove("slit-in-vertical")
     singleCard.current.classList.add("slit-out-vertical")
     let time = setTimeout(function () {
+      setCount(prevCount => prevCount + 1)
       singleCard.current.classList.remove("slit-out-vertical")
       singleCard.current.classList.add("slit-in-vertical")
       clearTimeout(time)
      }, 2000);
   }
+
   return (
     <Card ref={singleCard} style={{ width: '22rem' }} className="d-none" >
-      <Card.Img variant="top" src="./background_1.jpeg" />
+          {
+        matches[count] ?
+          <>
+      <Card.Img variant="top" src={matches[count].website} />
       <Card.Body>
-        <Card.Title>Comp Name-Level-Approx Comp</Card.Title>
-      <Card.Text>
-          About us:
-        </Card.Text>
+        <Card.Title className="justify-content-md-space-between">{matches[count].name} {matches[count].JobPostings[0].experience === 1 ? 'Jr.' : null} {matches[count].JobPostings[0].experience === 2 ? 'Mid.' : null} {matches[count].JobPostings[0].experience === 3 ? 'Sr.' : null} {`$${matches[count].JobPostings[0].salary}`}</Card.Title>
         <Card.Text>
           What we're looking for:
+        </Card.Text>
+        <Card.Text>
+          {matches[count].JobPostings[0].description}
         </Card.Text>
       </Card.Body>
       <Card.Body>
@@ -64,8 +72,12 @@ function CurrentJob({ sendYesButton }) {
             <AiFillHeart style={{ fontSize: '30px', color: 'white', fontWeight: 'bold'}} />
           </Button>
         </Row>
-      </Card.Body>
-      </Card>
+            </Card.Body>
+            </>
+        :
+      null
+    }
+      </Card >
   )
 }
 

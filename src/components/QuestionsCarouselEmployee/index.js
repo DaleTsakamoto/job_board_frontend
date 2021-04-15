@@ -1,8 +1,11 @@
 import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import {Form} from 'react-bootstrap'
 import { Carousel } from 'react-responsive-carousel';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
+
+import * as matchActions from "../../store/matches";
 
 import {
   ButtonGroup,
@@ -14,11 +17,12 @@ import './QuestionsCarouselEmployee.css'
 
 import AutofillBox from '../AutofillBox'
 
-function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
+function QuestionsCarouselEmployee({ sendYesButton, setSendYesButton, setIsLoaded }) {
+  const dispatch = useDispatch();
   const Range = createSliderWithTooltip(Slider.Range);
-  const [range, setRange] = useState([0, 0])
-
-  const [radioValue, setRadioValue] = useState(1);
+  const [salary, setSalary] = useState([0, 0])
+  const [experience, setExperience] = useState(1)
+  const [errors, setErrors] = useState([])
 
   const radios = [
     { name: 'Jr (0-3 yrs)', value: 1 },
@@ -27,13 +31,20 @@ function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
   ];
 
   const calcSalary = (val) => {
-    setRange(val)
+    setSalary(val)
   }
 
   const sendInfo = () => {
     setSendYesButton(!sendYesButton)
-  }
+    dispatch(matchActions.findMatches({ salary, experience }))
+      .then(()=> setIsLoaded(true))
+      .catch(
+      (res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      }
+    );
 
+  }
 
   return (
     <Carousel showIndicators={false} showThumbs={false} showArrows={true} >
@@ -58,8 +69,8 @@ function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
             variant="secondary"
             name="radio"
             value={radio.value}
-            checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            checked={experience === radio.value}
+            onChange={(e) => setExperience(e.currentTarget.value)}
           >
             {radio.name}
           </ToggleButton>
@@ -80,10 +91,15 @@ function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
           min={0}
           max={200000}
           marks={{ 0: '$0', 10000: '', 20000: '', 30000: '', 40000: '', 50000: '$50k', 60000: '', 70000: '', 80000: '', 90000: '', 100000: '$100k', 110000: '', 120000: '', 130000: '', 140000: '', 150000: '$150k', 160000: '', 170000: '', 180000: '', 190000: '', 200000: '$200k' }}
-          defaultValue={range}
+          defaultValue={salary}
           onChange={(val) => calcSalary(val)} />
       </div>
       <div className='Questions-Carousel-Slides'>
+      <ul>
+              {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+              ))}
+          </ul>
         <p>Are you ready to be matched with you perfect company?</p>
         <Button onClick={sendInfo} variant="primary" size="lg" active>
           Yes!

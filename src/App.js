@@ -20,7 +20,7 @@ function App() {
       .then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  return isLoaded &&(
+  return(
     <Switch>
       <Route path='/'>
         {sessionUser ?

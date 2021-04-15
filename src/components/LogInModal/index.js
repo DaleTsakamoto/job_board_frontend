@@ -24,7 +24,6 @@ function LoginModal(props) {
       event.stopPropagation();
     } else {
       event.preventDefault();
-      console.log("FRONTEND WORKED")
       dispatch(sessionActions.login({ email, password, employer })).catch(
         (res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);

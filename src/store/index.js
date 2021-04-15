@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+
 import sessionReducer from './session'
+import matchesReducer from './matches'
 
 
 const rootReducer = combineReducers({
-  session: sessionReducer
+  session: sessionReducer,
+  matches: matchesReducer
 })
 
 let enhancer

@@ -18,7 +18,6 @@ function CurrentJob({ sendYesButton }) {
 
   useEffect(() => {
     if (sendYesButton) {
-      console.log("WE MADE IT IN HERE")
       let time = setTimeout(function () {
         singleCard.current.classList.remove("d-none")
         singleCard.current.classList.add("slit-in-vertical")
@@ -26,6 +25,16 @@ function CurrentJob({ sendYesButton }) {
        }, 2000);
     }
   }, [sendYesButton])
+
+  const jobRated = () => {
+    singleCard.current.classList.remove("slit-in-vertical")
+    singleCard.current.classList.add("slit-out-vertical")
+    let time = setTimeout(function () {
+      singleCard.current.classList.remove("slit-out-vertical")
+      singleCard.current.classList.add("slit-in-vertical")
+      clearTimeout(time)
+     }, 2000);
+  }
   return (
     <Card ref={singleCard} style={{ width: '22rem' }} className="d-none" >
       <Card.Img variant="top" src="./background_1.jpeg" />
@@ -41,11 +50,17 @@ function CurrentJob({ sendYesButton }) {
       <Card.Body>
         <div style={{ textAlign: 'center'}}>My rating: {rating}</div>
         <Row className="justify-content-md-center">
-          <Button onClick={() => setLike(false)} variant="danger" style={{ width: '50px', height: '50px', borderRadius: '50%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Button onClick={() => {
+            setLike(false)
+            jobRated()
+          }} variant="danger" style={{ width: '50px', height: '50px', borderRadius: '50%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <IoMdClose style={{ fontSize: '30px', color: 'white', fontWeight: 'bold'}} />
           </Button>
           <Slider style={{ width: '10rem', margin: '1rem' }} min={0} max={100} onChange={(e) => setRating(e)} value={rating} />
-          <Button onClick={() => setLike(true)} variant="primary" style={{ width: '50px', height: '50px', borderRadius: '50%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+          <Button onClick={() => {
+            setLike(true)
+            jobRated()
+          }} variant="primary" style={{ width: '50px', height: '50px', borderRadius: '50%', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <AiFillHeart style={{ fontSize: '30px', color: 'white', fontWeight: 'bold'}} />
           </Button>
         </Row>

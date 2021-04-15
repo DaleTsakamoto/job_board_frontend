@@ -30,6 +30,7 @@ function Header() {
       <LoginModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
       />
     </>
   )

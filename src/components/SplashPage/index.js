@@ -19,6 +19,7 @@ function SplashPage() {
       <CreateAccountModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        setModalShow={setModalShow}
       />
     </>
   );

@@ -23,11 +23,14 @@ function LoginModal(props) {
       event.preventDefault();
       event.stopPropagation();
     } else {
-      return dispatch(sessionActions.login({ email, password, employer })).catch(
+      event.preventDefault();
+      console.log("FRONTEND WORKED")
+      dispatch(sessionActions.login({ email, password, employer })).catch(
         (res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         }
       );
+      return props.setModalShow(false)
     }
     setValidated(true);
   };

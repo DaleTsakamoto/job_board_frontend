@@ -23,16 +23,15 @@ function CreateAccountModal(props) {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    event.preventDefault();
     if (form.checkValidity() === false || password !== confirmPassword) {
-      event.preventDefault();
       event.stopPropagation();
     } else {
-      return (
         dispatch(sessionActions.signup({ email, password, firstName, lastName, employer }))
-      )
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
+      return props.setModalShow(false)
     }
     setValidated(true);
   };

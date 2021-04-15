@@ -11,15 +11,17 @@ const setUser = (user) => {
 
 export const login = (user) => async (dispatch) => {
   const { email, password, employer } = user;
+  console.log("WORKS GOING IN!!!!!!")
   const res = await fetch('api/session/login', {
     method: 'POST',
     body: JSON.stringify({
       email,
       password,
       employer,
-    })
+    }),
   })
-  dispatch(setUser(res.formData.user))
+  console.log("WORKS COMING OUT!!!", res)
+  dispatch(setUser(res.data.user))
   return res;
 }
 
@@ -40,7 +42,7 @@ export const signup = (user) => async (dispatch) => {
   return res;
 }
 
-const initialState = { applicant: null, recruiter: null }
+const initialState = { user: null }
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -53,5 +55,11 @@ const sessionReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export const restoreUser = () => async dispatch => {
+  const res = await fetch('/api/session');
+  dispatch(setUser(res.data.user));
+  return res;
+};
 
 export default sessionReducer

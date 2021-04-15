@@ -18,12 +18,12 @@ function QuestionsCarouselEmployee({sendYesButton, setSendYesButton}) {
   const Range = createSliderWithTooltip(Slider.Range);
   const [range, setRange] = useState([0, 0])
 
-  const [radioValue, setRadioValue] = useState('1');
+  const [radioValue, setRadioValue] = useState(1);
 
   const radios = [
-    { name: 'Jr (0-3 yrs)', value: '1' },
-    { name: 'Mid (3-5 yrs)', value: '2' },
-    { name: 'Sr (5+ yrs)', value: '3' },
+    { name: 'Jr (0-3 yrs)', value: 1 },
+    { name: 'Mid (3-5 yrs)', value: 2 },
+    { name: 'Sr (5+ yrs)', value: 3 },
   ];
 
   const calcSalary = (val) => {

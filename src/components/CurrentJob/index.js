@@ -48,7 +48,7 @@ function CurrentJob({ sendYesButton }) {
         </Card.Text>
       </Card.Body>
       <Card.Body>
-        <div style={{ textAlign: 'center'}}>My rating: {rating}</div>
+        <div style={{ textAlign: 'center', marginBottom: '-0.8rem'}}>My rating: {rating}</div>
         <Row className="justify-content-md-center">
           <Button onClick={() => {
             setLike(false)

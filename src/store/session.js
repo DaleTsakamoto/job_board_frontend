@@ -3,6 +3,7 @@ import { fetch } from './csrf'
 const SET_USER = 'session/setUser'
 
 const setUser = (user) => {
+  // debugger
   return {
     type: SET_USER,
     user
@@ -21,6 +22,7 @@ export const login = (user) => async (dispatch) => {
     }),
   })
   console.log("WORKS COMING OUT!!!", res)
+  console.log(res)
   dispatch(setUser(res.data.user))
   return res;
 }
@@ -42,10 +44,19 @@ export const signup = (user) => async (dispatch) => {
   return res;
 }
 
+export const restoreUser = () => async dispatch => {
+  // debugger
+  const res = await fetch('/api/session');
+  console.log(res)
+  dispatch(setUser(res.data));
+  return res;
+};
+
 const initialState = { user: null }
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
+  // debugger
   switch (action.type) {
     case SET_USER:
       newState = Object.assign({}, state)
@@ -56,10 +67,5 @@ const sessionReducer = (state = initialState, action) => {
   }
 }
 
-export const restoreUser = () => async dispatch => {
-  const res = await fetch('/api/session');
-  dispatch(setUser(res.data.user));
-  return res;
-};
 
 export default sessionReducer

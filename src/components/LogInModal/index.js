@@ -1,4 +1,7 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch } from "react-redux";
+
+import * as sessionActions from "../../store/session";
 
 import {
   Modal,
@@ -7,9 +10,11 @@ import {
 } from 'react-bootstrap'
 
 function LoginModal(props) {
+  const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -22,8 +27,13 @@ function LoginModal(props) {
 
   useEffect(() => {
     if (validated) {
-      console.log("PUT BACKEDN INFO HERE!")
-    }
+        setErrors([]);
+        return dispatch(sessionActions.login({ email, password })).catch(
+          (res) => {
+            if (res.data && res.data.errors) setErrors(res.data.errors);
+          }
+        );
+      };
   },[validated])
 
   return (
@@ -40,6 +50,11 @@ function LoginModal(props) {
     </Modal.Header>
     <Modal.Body>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <ul>
+              {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+              ))}
+          </ul>
         <Form.Group controlId="formBasicEmail">
             <Form.Control
               required

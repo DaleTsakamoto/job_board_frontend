@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react'
-
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   Modal,
   Button,
@@ -8,13 +8,18 @@ import {
   Col,
 } from 'react-bootstrap'
 
+import * as sessionActions from '../../store/session'
+
 function CreateAccountModal(props) {
+  const dispatch = useDispatch()
   const [validated, setValidated] = useState(false);
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [employer, setEmployer] = useState(false)
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -28,7 +33,14 @@ function CreateAccountModal(props) {
 
   useEffect(() => {
     if (validated) {
-      console.log("PUT BACKEDN INFO HERE!")
+      let userType;
+      userType = userType ? "employer" : "user";
+      return (
+        dispatch(sessionActions.signup({ email, password, firstName, lastName, userType }))
+      )
+        .catch(res => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
     }
   },[validated])
 
@@ -46,7 +58,12 @@ function CreateAccountModal(props) {
     </Modal.Header>
     <Modal.Body>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group>
+      <ul>
+              {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+              ))}
+      </ul>
+      <Form.Group>
         <Row>
           <Col>
             <Form.Control
@@ -120,13 +137,16 @@ function CreateAccountModal(props) {
               />
             
           }
-            {password !== confirmPassword ?
+          {password !== confirmPassword ?
           <Form.Control.Feedback type="invalid">
                   Passwords don't match
           </Form.Control.Feedback>
             :
             null
-          }
+            }
+            <Form.Group controlId="formBasicCheckbox">
+              <Form.Check value={employer} onChange={(e) => setEmployer(e.target.value)}type="checkbox" label="Employer" />
+            </Form.Group>
           </Form.Group>
           <div className="mb-3">
             <Form.File id="formcheck-api-regular">
